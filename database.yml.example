@@ -1,5 +1,5 @@
 adapter: mysql
 database: nfl
 username: root
-password: Ih8uih8U
+password: 
 host: localhost
