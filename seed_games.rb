@@ -13,5 +13,6 @@ Dir.foreach('nfllines') do |i|
         FasterCSV.foreach("nfllines/#{i}", {:headers => true}) do |row|
             Game.create!(:date => row[0].to_time, :away => row[1], :home => row[3], :away_score => row[2], :home_score => row[4], :spread => row[5].to_f, :total_spread => row[6].to_f)
         end
+      
     end
 end
