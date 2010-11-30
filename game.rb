@@ -7,11 +7,11 @@ class Game < ActiveRecord::Base
     pushes = 0
     all.each do |g|
       if team == "home"
-        if (g.home_score.to_f + g.spread) > g.away_score.to_f
+        if (g.home_score.to_f - g.spread) > g.away_score.to_f
           wins += 1
-        elsif (g.home.to_f + g.spread) < g.away_score.to_f
+        elsif (g.home.to_f - g.spread) < g.away_score.to_f
           losses += 1
-        elsif (g.home.to_f + g.spread) == g.away_score.to_f
+        elsif (g.home.to_f - g.spread) == g.away_score.to_f
           pushes += 1
           puts g.id
         end
