@@ -51,6 +51,7 @@ class Game < ActiveRecord::Base
   def self.ats_3(games)
     awins, alosses, apushes, wins, losses, pushes = 0
     alosses = 0
+    apushes = 0
     wins = 0
     losses = 0
     pushes = 0
@@ -65,6 +66,19 @@ class Game < ActiveRecord::Base
     puts awins.to_f/(awins.to_f + alosses.to_f + apushes.to_f)
     puts "Away Favs - (W):#{wins} (L):#{losses} (P):#{pushes}"
     puts wins.to_f/(wins.to_f + losses.to_f + pushes.to_f)
+  end
+
+  def self.avg_totals(games)
+    score_total = 0
+    game_total = 0
+    games.all.each do |g|
+      if g.home_score && g.away_score
+        game_total += 1
+        score_total += g.home_score
+        score_total += g.away_score
+      end
+    end
+    puts score_total.to_f/game_total.to_f
   end
   
 end
