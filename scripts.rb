@@ -1,7 +1,8 @@
 require 'game.rb'
+require 'playoff_game'
 
-games = Game.where("date > '2000-09-01'").where("date < '2019-08-01'")
-#Game.ats(games)
-#Game.ats_2(games)
-#Game.ats_3(games)
-Game.avg_totals(games)
+games = PlayoffGame.where("date > '2000-09-01'").where("date < '2019-08-01'")
+PlayoffGame.ats(games)
+PlayoffGame.ats_2(games)
+PlayoffGame.ats_3(games)
+PlayoffGame.avg_totals(games)
