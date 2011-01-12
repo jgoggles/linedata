@@ -4,6 +4,7 @@ class CreatePlayoffGames < ActiveRecord::Migration
   def self.up
     create_table :playoff_games do |t|
       t.datetime :date
+      t.string :round
       t.string :home
       t.string :away
       t.integer :home_score

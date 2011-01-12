@@ -20,17 +20,9 @@ Game.connection.execute("TRUNCATE playoff_games")
 
 
 Dir.foreach('playofflines') do |i|
-  if i == "post2009lines.csv"
-    if i =~ /.\.csv/
-      FasterCSV.foreach("playofflines/#{i}", {:headers => true}) do |row|
-        PlayoffGame.create!(:date => row[0].to_time, :away => row[1], :home => row[3], :away_score => row[2], :home_score => row[4], :spread => row[5].to_f, :total_spread => row[6].to_f)
-      end
-    end
-  else
-    if i =~ /.\.csv/
-      FasterCSV.foreach("playofflines/#{i}", {:headers => true}) do |row|
-        PlayoffGame.create!(:date => row[0].to_time, :away => row[2], :home => row[4], :away_score => row[3], :home_score => row[5], :spread => row[6].to_f, :total_spread => row[7].to_f)
-      end
+  if i =~ /.\.csv/
+    FasterCSV.foreach("playofflines/#{i}", {:headers => true}) do |row|
+      PlayoffGame.create!(:date => row[0].to_time, :round => row[1], :away => row[2], :home => row[4], :away_score => row[3], :home_score => row[5], :spread => row[6].to_f, :total_spread => row[7].to_f)
     end
   end
 end
